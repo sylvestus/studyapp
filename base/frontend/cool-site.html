@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>cool website fetchin from rest example</h4>
+    <div id="rooms-container"></div>
+    <script>
+        let roomsContainer = document.getElementById('rooms-container')
+
+        
+        let getRooms = async () =>{
+           let response = await fetch('http://127.0.0.1:8000/api/rooms/')
+           let rooms =await response.json()
+        //    with fetch to send data you have to stringify and to get it you have to parse into jso data with .json()
+        // to allow for this install cors headers and set it up on the backend,,, 
+
+        //    console.log('RESPONSE:',rooms)
+
+        for(let i = 0; rooms.length > 1; i++){
+            let room = rooms[i]
+            let row = `<div>
+                <h3>${room.name}</h3>
+                </div>`
+            roomsContainer.innerHTML += row
+        }
+       } 
+       getRooms()
+    </script>
+</body>
+</html>

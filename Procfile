@@ -1,0 +1,1 @@
+web: gunicorn studyCane.wsgi --log-file -
